@@ -16,7 +16,7 @@ reportSheet.getRange(4,7).setValue("No")
 sheet.clear();
 
 var columns = ['Account','Campaign','AdGroup','Ad ID','Headline','HeadlinePart1','HeadlinePart2','Description','Description1','Description2','ExpandedTextAdDescription2','ExpandedTextAdHeadlinePart3','Path1','Path2','Final URL','Mobile Final URL','Impr','Clicks','Cost','Reg'];   
-sheet.appendRow(columns);
+sheet.getRange(99,1,array.length,array[0].length).setValues(columns)
   
 /*var accountIterator = AdsManagerApp.accounts()
  .withCondition("Cost > 0")
@@ -51,7 +51,7 @@ while(rows.hasNext()) {
       
     
   }  
-  sheet.getRange(2,1,array.length,array[0].length).setValues(array)
+  sheet.getRange(100,1,array.length,array[0].length).setValues(array)
 
   //statusSheet.getRange(3,2).setValue('Updated on ' + date)
   
