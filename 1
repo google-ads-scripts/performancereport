@@ -16,7 +16,7 @@ reportSheet.getRange(4,7).setValue("No")
 sheet.clear();
 
 var columns = ['Account','Campaign','AdGroup','Ad ID','Headline','HeadlinePart1','HeadlinePart2','Description','Description1','Description2','ExpandedTextAdDescription2','ExpandedTextAdHeadlinePart3','Path1','Path2','Final URL','Mobile Final URL','Impr','Clicks','Cost','Reg'];   
-sheet.getRange(99,1,array.length,array[0].length).setValues(columns)
+sheet.getRange(99,1).setValues(columns)
   
 /*var accountIterator = AdsManagerApp.accounts()
  .withCondition("Cost > 0")
