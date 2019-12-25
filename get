@@ -17,7 +17,7 @@ var columns = ['Account','Campaign','AdGroup','Ad ID','Headline','HeadlinePart1'
 sheet.appendRow(columns);
 
 var accountIterator = AdsManagerApp.accounts()
- .withCondition('Name contains "La"')
+ .withCondition('Name contains "La" and Cost > 1000')
  .forDateRange("TODAY")
  .orderBy("Clicks DESC")
  .get();
