@@ -17,7 +17,7 @@ var columns = ['Account','Campaign','AdGroup','Ad ID','Headline','HeadlinePart1'
 sheet.appendRow(columns);
 
 var accountIterator = AdsManagerApp.accounts()
- .withCondition("Cost > 0")
+ .withCondition( 'Account Name Contains "La" and "Cost > 0"')
  .forDateRange("TODAY")
  .orderBy("Clicks DESC")
  .get();
@@ -32,7 +32,7 @@ AdsManagerApp.select(account)
 var report = AdsApp.report(
  'SELECT AccountDescriptiveName, CampaignName,AdGroupName,Id,Headline,HeadlinePart1,HeadlinePart2,Description,Description1,Description2,ExpandedTextAdDescription2,ExpandedTextAdHeadlinePart3,Path1,Path2,CreativeFinalUrls,CreativeFinalMobileUrls,Impressions, Clicks,Cost,Conversions ' +
  'FROM AD_PERFORMANCE_REPORT ' +
- 'WHERE AccountDescriptiveName Contains "La" and Cost > 1 ' +
+ //'WHERE AccountDescriptiveName Contains "La" and Cost > 1 ' +
  'DURING TODAY');
 
 
