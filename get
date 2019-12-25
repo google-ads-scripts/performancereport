@@ -22,9 +22,8 @@ var accountIterator = AdsManagerApp.accounts()
  .orderBy("Clicks DESC")
  .get();
 
-  // Iterate through the ACCOUNTS
-var accountIterator = accountSelector.get();  
- var array = []
+  // Iterate through the ACCOUNTS  
+var array = []
 while (accountIterator.hasNext()) {
 var account = accountIterator.next();
 AdsManagerApp.select(account)
