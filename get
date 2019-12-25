@@ -37,11 +37,11 @@ var rows = report.rows();
 
 while(rows.hasNext()) {
   var row = rows.next().formatForUpload(report);
- Logger.log(row)
+ //Logger.log(row)
 
 
 
-     array.push([row.Account,row.Campaign,row["Ad group"],row["Ad ID"],row["Headline 1"],row["Headline 2"],row["Expanded Text Ad Description 1"],row["Expanded Text Ad Description 2"],row["Expanded Text Ad Description 3"],row.Description,row["Description line 1"],row["Description line 2"],row["Path 1"],row["Path 2"],row["Final URL"],row["Mobile final URL"],row["Tracking Template"],row.Impressions,row.Clicks,row.Cost,row["Conv. (opt.)"]])
+     array.push([row.Account,row.Campaign,row["Ad group"],row["Ad ID"],row["Headline 1"],row["Headline 2"],row["Expanded Text Ad Description 1"],row["Expanded Text Ad Description 2"],row["Expanded Text Ad Description 3"],row.Description,row["Description line 1"],row["Description line 2"],row["Path 1"],row["Path 2"],row["Final URL"],row["Mobile final URL"],row["Tracking template"],row.Impressions,row.Clicks,row.Cost,row["Conv. (opt.)"]])
 
 
   }  
