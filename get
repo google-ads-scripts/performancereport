@@ -1,1 +1,53 @@
+var SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/18pMHcY2NaI1e_n-rx4eJFpVKfPFbFoHp_7mEEbrCbkU/';
+var ss = SpreadsheetApp.openByUrl(SPREADSHEET_URL);
+var sheet = ss.getSheetByName("Archive");
+var reportSheet = ss.getSheetByName("Report");
+var date = new Date();
 
+
+//reportSheet.getRange(2,7).setValue("Currently Updating")
+//reportSheet.getRange(4,7).setValue("No")
+
+sheet.clear();
+
+var columns = ['Account','Campaign','AdGroup','Ad ID','Headline','HeadlinePart1','HeadlinePart2','Description','Description1','Description2','ExpandedTextAdDescription2','ExpandedTextAdHeadlinePart3','Path1','Path2','Final URL','Mobile Final URL','Impr','Clicks','Cost','Reg'];   
+sheet.appendRow(columns);
+
+var accountIterator = AdsManagerApp.accounts()
+ .withCondition('Cost > 0')
+ .forDateRange("TODAY")
+ .orderBy("Clicks DESC")
+ .get();
+
+  // Iterate through the ACCOUNTS  
+var array = []
+while (accountIterator.hasNext()) {
+var account = accountIterator.next();
+AdsManagerApp.select(account)
+
+
+var report = AdsApp.report(
+ 'SELECT AccountDescriptiveName, CampaignName,AdGroupName,Id,Headline,HeadlinePart1,HeadlinePart2,Description,Description1,Description2,ExpandedTextAdDescription2,ExpandedTextAdHeadlinePart3,Path1,Path2,CreativeFinalUrls,CreativeFinalMobileUrls,Impressions, Clicks,Cost,Conversions ' +
+ 'FROM AD_PERFORMANCE_REPORT ' +
+ 'WHERE Cost > 0 ' +
+ 'DURING TODAY');
+
+
+var rows = report.rows();
+
+while(rows.hasNext()) {
+  var row = rows.next().formatForUpload(report);
+ //Logger.log(row)
+
+
+
+     array.push([row.Account,row.Campaign,row["Ad group"],row["Ad ID"],row["Headline 1"],row["Headline 2"],row["Expanded Text Ad Description 1"],row["Expanded Text Ad Description 2"],row["Expanded Text Ad Description 3"],row.Description,row["Description line 1"],row["Description line 2"],row["Path 1"],row["Path 2"],row["Final URL"],row["Mobile final URL"],row.Impressions,row.Clicks,row.Cost,row["Conv. (opt.)"]])
+
+
+  }  
+  sheet.getRange(2,1,array.length,array[0].length).setValues(array)
+}
+  //statusSheet.getRange(3,2).setValue('Updated on ' + date)
+
+  //reportSheet.getRange(2,7).setValue(date)
+ // reportSheet.getRange(4,7).setValue("Yes")
