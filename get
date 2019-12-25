@@ -41,7 +41,7 @@ var rows = report.rows();
 
 while(rows.hasNext()) {
   var row = rows.next().formatForUpload(report);
- Logger.log(row)
+ //Logger.log(row)
 
 
 
