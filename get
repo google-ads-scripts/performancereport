@@ -16,24 +16,24 @@ sheet.clear();
 var columns = ['Account','Campaign','AdGroup','Ad ID','Headline','HeadlinePart1','HeadlinePart2','Description','Description1','Description2','ExpandedTextAdDescription2','ExpandedTextAdHeadlinePart3','Path1','Path2','Final URL','Mobile Final URL','Impr','Clicks','Cost','Reg'];   
 sheet.appendRow(columns);
 
-/*var accountIterator = AdsManagerApp.accounts()
+var accountIterator = AdsManagerApp.accounts()
  .withCondition("Cost > 0")
  .forDateRange("TODAY")
  .orderBy("Clicks DESC")
- .get();*/
+ .get();
 
   // Iterate through the ACCOUNTS
-//var accountIterator = accountSelector.get();  
+var accountIterator = accountSelector.get();  
  var array = []
-/*while (accountIterator.hasNext()) {
+while (accountIterator.hasNext()) {
 var account = accountIterator.next();
-AdsManagerApp.select(account)*/
+AdsManagerApp.select(account)
 
 
 var report = AdsApp.report(
  'SELECT AccountDescriptiveName, CampaignName,AdGroupName,Id,Headline,HeadlinePart1,HeadlinePart2,Description,Description1,Description2,ExpandedTextAdDescription2,ExpandedTextAdHeadlinePart3,Path1,Path2,CreativeFinalUrls,CreativeFinalMobileUrls,Impressions, Clicks,Cost,Conversions ' +
  'FROM AD_PERFORMANCE_REPORT ' +
-// 'WHERE Cost > 0 ' +
+ 'WHERE Cost > 100 ' +
  'DURING TODAY');
 
 
