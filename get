@@ -10,7 +10,7 @@ var date = new Date();
 
 sheet.clear();
 
-var columns = ['Account','Campaign','AdGroup','Ad ID','Headline','HeadlinePart1','HeadlinePart2','Description','Description1','Description2','ExpandedTextAdDescription2','ExpandedTextAdHeadlinePart3','Path1','Path2','Final URL','Mobile Final URL','Impr','Clicks','Cost','Reg'];   
+var columns = ['Account','Campaign','AdGroup','Ad ID','Headline','HeadlinePart1','HeadlinePart2','Description','Description1','Description2','ExpandedTextAdDescription2','ExpandedTextAdHeadlinePart3','Path1','Path2','Final URL','Mobile Final URL','Tracking Template','Impr','Clicks','Cost','Reg'];   
 sheet.appendRow(columns);
 
 var accountIterator = AdsManagerApp.accounts()
@@ -41,7 +41,7 @@ while(rows.hasNext()) {
 
 
 
-     array.push([row.Account,row.Campaign,row["Ad group"],row["Ad ID"],row["Headline 1"],row["Headline 2"],row["Expanded Text Ad Description 1"],row["Expanded Text Ad Description 2"],row["Expanded Text Ad Description 3"],row.Description,row["Description line 1"],row["Description line 2"],row["Path 1"],row["Path 2"],row["Final URL"],row["Mobile final URL"],row.Impressions,row.Clicks,row.Cost,row["Conv. (opt.)"]])
+     array.push([row.Account,row.Campaign,row["Ad group"],row["Ad ID"],row["Headline 1"],row["Headline 2"],row["Expanded Text Ad Description 1"],row["Expanded Text Ad Description 2"],row["Expanded Text Ad Description 3"],row.Description,row["Description line 1"],row["Description line 2"],row["Path 1"],row["Path 2"],row["Final URL"],row["Mobile final URL"],row["Tracking Template"],row.Impressions,row.Clicks,row.Cost,row["Conv. (opt.)"]])
 
 
   }  
