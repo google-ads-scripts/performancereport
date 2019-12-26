@@ -42,7 +42,7 @@ while(rows.hasNext()) {
 
 
 
-     array.push([row.Account,row.Campaign,row["Ad group"],row["Ad ID"],row["Headline 1"],row["Headline 2"],row["Expanded Text Ad Description 2"],row.Description,row["Path 1"],row["Path 2"],row["Final URL"],row["Mobile final URL"],row["Tracking template"],row.Impressions,row.Clicks,row.Cost,row["Conv. (opt.)"]])
+     array.push([row.Account,row.Campaign,row["Ad group"],row["Ad ID"],row["Headline 1"],row["Headline 2"],row["Expanded Text Ad Description 2"],row.Description,row["Path 1"],row["Path 2"],row["Final URL"],row["Mobile final URL"],row["Tracking template"],row.Impressions,row.Clicks,row["Conv. (opt.)"]])
 
 
   }  
