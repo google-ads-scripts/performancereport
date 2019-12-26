@@ -30,7 +30,7 @@ AdsManagerApp.select(account)
 var report = AdsApp.report(
  'SELECT AccountDescriptiveName, CampaignName,AdGroupName,Id,Headline,HeadlinePart1,HeadlinePart2,Description,Description1,Description2,ExpandedTextAdDescription2,ExpandedTextAdHeadlinePart3,Path1,Path2,CreativeFinalUrls,CreativeFinalMobileUrls,CreativeTrackingUrlTemplate,Conversions,ConversionCategoryName,ConversionTypeName ' +
  'FROM AD_PERFORMANCE_REPORT ' +
- 'WHERE Cost > 0 ' +
+ 'WHERE Conversions > 0 ' +
  'DURING TODAY');
 
 
