@@ -15,7 +15,7 @@ var columns = ['Account','Campaign','AdGroup','Ad ID','Headline1','Headline 2','
 sheet.appendRow(columns);
 
 var accountIterator = AdsManagerApp.accounts()
- .withCondition('Cost > 0')
+ .withCondition('Conversions > 0')
  .forDateRange("TODAY")
  .orderBy("Clicks DESC")
  .get();
