@@ -1,1 +1,40 @@
 
+var SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/18Clpx9T5t_eWW8Z2t89bQu8mauXcaGzpku1B2tCujLk/';
+var ss = SpreadsheetApp.openByUrl(SPREADSHEET_URL);
+var sheet = ss.getSheetByName("Formulas");
+var reportSheet = ss.getSheetByName("Report");
+var date = new Date();
+
+sheet.clear();
+
+var columns = ['Account','Campaign','AdGroup','Ad ID','Headline1','Headline 2','Expanded Text Ad Description 2','Description','Path1','Path2','Final URL','Mobile Final URL','Tracking Template','Impr','Clicks','Cost','Reg'];   
+sheet.appendRow(columns);
+
+var accountIterator = AdsManagerApp.accounts()
+ .withCondition('Cost > 0')
+ .forDateRange("TODAY")
+ .orderBy("Clicks DESC")
+ .get();
+  
+var array = []
+while (accountIterator.hasNext()) {
+var account = accountIterator.next();
+AdsManagerApp.select(account)
+
+var report = AdsApp.report(
+ 'SELECT AccountDescriptiveName, CampaignName,AdGroupName,Id,Headline,HeadlinePart1,HeadlinePart2,Description,Description1,Description2,ExpandedTextAdDescription2,ExpandedTextAdHeadlinePart3,Path1,Path2,CreativeFinalUrls,CreativeFinalMobileUrls,CreativeTrackingUrlTemplate, Impressions, Clicks,Cost,Conversions ' +
+ 'FROM AD_PERFORMANCE_REPORT ' +
+ 'WHERE Cost > 0 ' +
+ 'DURING TODAY');
+
+var rows = report.rows();
+
+while(rows.hasNext()) {
+  var row = rows.next().formatForUpload(report);
+ Logger.log(row)
+
+array.push([row.Account,row.Campaign,row["Ad group"],row["Ad ID"],row["Headline 1"],row["Headline 2"],row["Expanded Text Ad Description 2"],row.Description,row["Path 1"],row["Path 2"],row["Final URL"],row["Mobile final URL"],row["Tracking template"],row.Impressions,row.Clicks,row.Cost,row["Conv. (opt.)"]])
+
+  }  
+  sheet.getRange(100,1,array.length,array[0].length).setValues(array)
+}
