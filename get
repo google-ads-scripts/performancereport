@@ -1,1 +1,3 @@
-
+  MailApp.sendEmail("ppcscript@gmail.com,
+                  "No Subject",
+                  ".");
